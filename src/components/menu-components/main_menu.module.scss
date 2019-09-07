@@ -1,0 +1,30 @@
+@import "../../assets/sass/_variables";
+
+.main_menu {
+	display: flex;
+	align-items: center;
+
+	.list_item {
+
+		&:not(:last-child) {
+			padding-right: 7px;
+		}
+		&:not(:first-child) {
+			padding-left: 7px;
+		}
+		a {
+			display: block;
+			height: 30px;
+			padding-left: 10px;
+			padding-right: 10px;
+			text-transform: uppercase;
+			@include fonts(12px, $Montserrat, 30px);
+			color: $tx_black;
+		}
+		&.active {
+			a {
+				color: $tx_green;
+			}
+		}
+	}
+}

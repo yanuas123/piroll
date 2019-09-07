@@ -1,0 +1,17 @@
+@import "../assets/sass/_variables";
+
+.header {
+	height: 100px;
+	background-color: $white;
+	
+	.inside_container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+}
+.logo {
+	width: 31px;
+	height: 25px;
+	margin: 8px;
+}

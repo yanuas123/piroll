@@ -1,0 +1,41 @@
+@import "../../assets/sass/_variables";
+
+.gallery_btn_block {
+	height: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-right: 7px;
+    padding-left: 7px;
+}
+.slider_btn {
+	width: 170px;
+	padding: 30px 21px;
+	@include fonts(12px, $Montserrat, normal);
+	color: $tx_black;
+	text-transform: uppercase;
+	position: relative;
+
+	&:before {
+		content: "";
+		display: inline-block;
+		width: 6px;
+		height: 9px;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	&.slider_btn_prev:before {
+		left: 0;
+		@include arrow("../../", "left");
+	}
+	&.slider_btn_next {
+		text-align: right;
+
+		&:before {
+			right: 0;
+			@include arrow("../../", "right");
+			transform: translateY(-50%) rotate(180deg);
+		}
+	}
+}

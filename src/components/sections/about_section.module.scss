@@ -1,0 +1,43 @@
+@import "../../assets/sass/_variables";
+
+.about_section {
+	min-height: 570px;
+	background-color: $blue_grey;
+
+	.section_inside {
+		display: flex;
+		width: 1366px;
+	}
+	.image_wrap {
+		background-color: $light_grey;
+		width: 50%;
+		max-height: 100%;
+
+		img {
+			object-fit: cover;
+			width: 101%;
+			height: 100%;
+			vertical-align: top;
+		}
+	}
+	.description_wrap {
+		width: 50%;
+		padding: 86px;
+		padding-right: 120px;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
+
+		h3 {
+			margin-bottom: 24px;
+		}
+		.decription {
+			margin-top: 6px;
+			margin-bottom: 6px;
+		}
+		.sign_image {
+			margin-bottom: 6px;
+		}
+	}
+}

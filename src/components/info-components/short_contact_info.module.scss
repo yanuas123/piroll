@@ -1,0 +1,11 @@
+@import "../../assets/sass/_variables";
+
+.email {
+	&:hover, &:focus {
+		color: $tx_light_grey;
+		opacity: $hover_opacity;
+		@media (hover: none) {
+			opacity: 1;
+		}
+	}
+}

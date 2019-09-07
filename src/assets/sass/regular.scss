@@ -1,0 +1,433 @@
+
+/* ========================================================================== */
+/* STANDARD ELEMENTS ======================================================== */
+
+/* loader */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+.loader {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: $z_loader;
+	top: 0;
+	right: 0;
+	display: none;
+	align-items: center;
+	justify-content: center;
+
+	&.open {
+		display: flex;
+	}
+	.loader_ico {
+		display: block;
+		width: 70px;
+		height: 70px;
+		/*		@include bg_contain($loader);*/
+	}
+}
+
+body {
+	@include fonts();
+	color: $tx_grey;
+	background-color: $white;
+}
+.logo {
+	max-width: 31px;
+	max-height: 25px;
+	@include bg_contain();
+}
+
+/* text properties ---------------------------------------------------------- */
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+	color: $tx_black
+}
+h1, .h1 {
+	@include fonts(45px, $Montserrat, 45px);
+	text-align: center;
+}
+h2, .h2 {
+	@include fonts(42px, $Montserrat, 42px);
+	text-align: center;
+}
+h3, .h3 {
+	@include fonts(30px, $Montserrat, 30px);
+	text-align: center;
+}
+h4, .h4 {
+	@include fonts(26px, $Montserrat, 26px);
+}
+h5, .h5 {
+	@include fonts(24px, $Montserrat, 24px);
+}
+h6, .h6 {
+	@include fonts(20px, $Montserrat, 20px);
+}
+p {
+	margin-bottom: 24px;
+}
+b, .bold {
+	font-weight: 600;
+}
+u, .underline {
+	text-decoration: underline;
+	text-decoration-color: $tx_black;
+}
+mark {
+	background-color: $light_grey;
+}
+small, .small-text {
+	font-size: 12px;
+}
+blockquote {
+	padding: 40px 80px;
+	@include fonts(18px, $Montserrat);
+}
+hr, .hr {
+	margin: 8px 0;
+	border: none;
+	@include border(top);
+}
+.image-cover {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.image-contain {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+/* link */
+a {
+	text-decoration: none;
+	color: $tx_grey;
+	line-height: 24px;
+}
+a:hover, a:focus {
+	text-decoration: none;
+	color: $green;
+	@media (hover: none) {
+		color: $tx_grey;
+	}
+}
+/* end Text properties ------------------------------------------------------ */
+
+/* forms ==================================================================== */
+.fieldset {
+	display: flex;
+	flex-direction: column;
+	padding: 40px 0;
+	@include border(top, bottom);
+
+	.legend {
+		width: 100%;
+		padding: 0 0 40px;
+		@include fonts(30px, $Montserrat, 84px);
+		color: $tx_black;
+		text-align: center;
+	}
+}
+.datalist {
+
+	.option {
+
+	}
+}
+
+/* validation */
+.input-parent {
+	display: flex;
+	flex-direction: column;
+	padding: 12px 0;
+
+	.text-empty, .text-invalid, .server-text-invalid {
+		@include fonts(14px, $Sans);
+		color: $red;
+		display: none;
+		padding-top: 8px;
+	}
+	&.invalid .text-invalid, &.empty .text-empty, &.invalid-server .server-text-invalid {
+		display: block;
+	}
+	&.invalid, &.empty, &.invalid-server {
+		input[type='text'], input[type='password'], input[type='date'], input[type='email'], input[type='number'], input[type='search'], input[type='tel'], input[type='url'], textarea, select {
+			border: 1px solid $red !important;
+		}
+	}
+}
+/* end Validation */
+
+.input-wrap {
+	padding-bottom: 30px;
+	@include flex_center();
+	@media screen and (max-width: 992px) {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.label {
+		width: 200px;
+		flex-shrink: 0;
+		padding-right: 0.94rem;
+		@media screen and (max-width: 992px) {
+			width: 100%;
+			padding-right: 0;
+		}
+	}
+	.input, .textarea, .select {
+		width: 100%;
+		margin-bottom: 0;
+	}
+}
+.input__couple {
+	width: calc(50% - 15px);
+}
+.input__couple__first {
+	margin-right: 30px;
+}
+.required-sign {
+	color: $red;
+}
+
+.label {
+	@include fonts(15px, $Sans);
+	color: $tx_grey;
+}
+.btn, .button, .label.btn {
+	@include fonts(12px, $Montserrat);
+	text-transform: uppercase;
+	color: $tx_white;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	height: 53px;
+	min-width: 180px;
+	padding: 14px 40px;
+	background-color: $green;
+	@include transition();
+
+	&:hover, &:focus {
+		text-decoration: none;
+		background-color: scale-color($green, $lightness:$hover_lightness);
+		@media (hover: none) {
+			background-color: $green;
+		}
+	}
+	&:disabled {
+		background-color: scale-color($tx_light_grey, $lightness:50%);
+		cursor: default;
+	}
+}
+
+.input, .textarea, .select {
+	@extend %form_structure;
+	@extend %form_colors;
+}
+.select {
+	margin-bottom: 30px;
+
+	&.placeholder {
+		option:disabled:nth-child(1) {
+			color: transparent !important;
+		}
+	}
+}
+.inline-select {
+	display: inline-block;
+	max-width: 320px;
+}
+.select-label {
+	padding-right: 12px;
+}
+.textarea {
+	height: auto;
+	min-height: 170px;
+	width: 100%;
+}
+.input.file {
+	display: none;
+}
+.input.file:disabled+.label.btn {
+	background-color: scale-color($tx_light_grey, $lightness:50%);
+	cursor: default;
+}
+
+
+.close-btn {
+	width: 22px;
+	height: 22px;
+	@include bg_contain(url(./#{$icon_close}));
+}
+.icon-eye {
+	background-position: center;
+	background-size: 48px 30px;
+	background-repeat: no-repeat;
+	background-image: url(./#{$icon_eye});
+}
+
+/* end Forms ================================================================ */
+
+
+/* structure blocks ========================================================= */
+
+.vertical-row-center {
+	@include flex_center();
+}
+.space-between {
+	@include flex_center();
+	justify-content: space-between;
+}
+.section-wrap {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+
+	.section-content_width {
+		width: 1186px;
+		max-width: 100%;
+	}
+	.description-section-block {
+		width: 1186px;
+		max-width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+}
+
+/* end Structure blocks ===================================================== */
+
+/* POP-UP structure ========================================================= */
+
+body.noscroll {
+	overflow: hidden;
+}
+.popup-wrap {
+	display: none;
+	opacity: 0;
+	pointer-events: none;
+	@include transition(opacity, 0.4s);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: $z_popup;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+
+	.back-wall {
+		@include absolute(0, 0, $z_popup_back);
+		opacity: 0.4;
+		width: 100%;
+		height: 100%;
+		background-color: $black;
+	}
+	.popups-block_wrap {
+		@include absolute(0, 0, $z_popup_wrap);
+		width: 100%;
+		height: 100%;
+		overflow-x: hidden;
+		overflow-y: auto;
+
+		.popups-frame_wrap {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			min-height: 100%;
+		}
+		.popups-frame {
+			margin: 6px;
+			padding: 12px;
+			max-width: calc(100% - 12px);
+			min-width: 200px;
+			min-height: 100px;
+			background-color: $white;
+			border-radius: 4px;
+
+			.close-button-row {
+				display: flex;
+				justify-content: flex-end;
+				margin-top: -10px;
+				margin-right: -10px;
+
+				.close-btn {
+					padding: 4px;
+				}
+			}
+			.popups-window {
+				max-width: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+		}
+	}
+	&.display-popup {
+		display: block;
+	}
+	&.animate-popup {
+		opacity: 1;
+		pointer-events: auto;
+		@include transition(opacity, 0.4s);
+	}
+}
+.popup-window {
+	display: none;
+	max-width: 100%;
+
+	&.popup-retreat {
+		padding: 0 7% 6px;
+		@media screen and (max-width: 479px) {
+			padding: 0 1% 6px;
+		}
+	}
+	.h4, .h5, .h6 {
+		width: auto;
+		padding: 20px 0;
+	}
+	.input-parent, .input, .select, .textarea {
+		width: 100%;
+	}
+	.text-empty, .text-invalid, .server-text-invalid {
+		align-self: flex-start;
+	}
+	&.display-popup {
+		display: block;
+	}
+	.popup-description {
+		@include fonts(30px, $Montserrat, 84px);
+	}
+	.label {
+		@media screen and (max-width: 768px) {
+			padding-bottom: 6px;
+		}
+	}
+}
+
+/* end POP-UP structure ===================================================== */
+
+/* tooltip ------------------------------------------------------------------ */
+
+.tooltip {
+	@include absolute(0, 0, $z_tooltip);
+	min-width: 100px;
+	max-width: 90vw;
+	background-color: #000;
+	color: #fff;
+	padding: 8px 6px;
+	text-align: center;
+	opacity: 1;
+	@include transition(opacity, 0s);
+
+	&.hidden-tooltip {
+		opacity: 0;
+		pointer-events: none;
+		@include transition(opacity, 1.6s);
+	}
+}
+
+/* end Tooltip -------------------------------------------------------------- */
+
+/* end STANDARD ELEMENTS ==================================================== */

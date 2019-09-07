@@ -1,0 +1,33 @@
+@import "../../assets/sass/_variables";
+
+.indicators_item {
+	width: 24%;
+	display: flex;
+	flex-direction: column;
+	padding-left: 82px;
+	min-height: 44px;
+	background-position: 12px center;
+	background-repeat: no-repeat;
+	background-size: 40px auto;
+	
+	.number {
+		@include fonts(18px, $Montserrat);
+		padding-bottom: 4px;
+	}
+	.title {
+		@include fonts(12px, $Montserrat, 20px);
+		text-transform: uppercase;
+	}
+}
+.briefcase_icon {
+	background-image: url(../../#{$icon_portfolio});
+}
+.clock_icon {
+	background-image: url(../../#{$icon_clock});
+}
+.star_icon {
+	background-image: url(../../#{$icon_star});
+}
+.like_icon {
+	background-image: url(../../#{$icon_like});
+}

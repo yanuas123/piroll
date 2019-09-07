@@ -1,0 +1,7 @@
+@import "../../assets/sass/_variables";
+
+.company_name {
+	@include fonts(18px, $Montserrat);
+	color: $tx_white;
+	padding-bottom: 21px;
+}

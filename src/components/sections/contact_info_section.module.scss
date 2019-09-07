@@ -1,0 +1,26 @@
+@import "../../assets/sass/_variables";
+
+.contact_info_section {
+	padding-top: 100px;
+	padding-bottom: 100px;
+	background-color: $blue_grey;
+}
+.contact_info_section__wrap {
+	padding-left: 7px;
+	padding-right: 7px;
+}
+.contact_section {
+	display: flex;
+	padding-bottom: 100px;
+
+	.contact_data {
+		width: 42.7%;
+		padding-right: 10%;
+	}
+	.contact_message_form {
+		width: 57.3%;
+	}
+}
+.map_section {
+	width: 100%;
+}

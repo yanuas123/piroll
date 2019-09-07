@@ -1,0 +1,32 @@
+.mock {
+	width: 100%;
+	min-height: 100vh;
+	position: absolute;
+	z-index: 999999999;
+	top: 0;
+	left: 0;
+	background-repeat: no-repeat;
+	background-position: top center;
+	opacity: 0.2;
+	pointer-events: none;
+}
+.mock1 {
+	background-image: url(../../images/mock/02_Home.jpg);
+	background-size: 1366px 100%;
+	height: 1596px;
+}
+.mock2 {
+	background-image: url(../../images/mock/03_About.jpg);
+	background-size: 1366px 100%;
+	height: 1940px;
+}
+.mock3 {
+	background-image: url(../../images/mock/04_Project_Single.jpg);
+	background-size: 1366px 100%;
+	height: 1054px;
+}
+.mock4 {
+	background-image: url(../../images/mock/05_Contact.jpg);
+	background-size: 1366px 100%;
+	height: 1563px;
+}

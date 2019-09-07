@@ -1,0 +1,54 @@
+@import "../../assets/sass/_variables";
+
+.work_process_section {
+	padding-top: 96px;
+	padding-bottom: 96px;
+
+	.work_process_section_inside {
+		padding-left: 8px;
+		padding-right: 8px;
+	}
+}
+.title {
+	margin-bottom: 36px;
+}
+.description {
+	font-size: 17px;
+	text-align: center;
+	width: 520px;
+	max-width: 100%;
+	margin: 0;
+}
+.video_block {
+	width: 100%;
+	height: 568px;
+	background-color: $light_grey;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 54px;
+}
+.start_button {
+	width: 85px;
+	height: 85px;
+	background-color: $green;
+	border-radius: 50%;
+	box-shadow: $button_shadow;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	@include transition();
+
+	&:hover, &:focus {
+		background-color: $green_hover;
+	}
+	&:after {
+		content: "";
+		display: block;
+		width: 11px;
+		height: 17px;
+		border-top: 8.5px solid transparent;
+		border-bottom: 8.5px solid transparent;
+		border-left: 11px solid #fff;
+	}
+}

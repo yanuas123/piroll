@@ -1,0 +1,17 @@
+@import "../../assets/sass/_variables";
+
+.short_description_section {
+	padding-top: 96px;
+	padding-bottom: 96px;
+	background-color: $blue_grey;
+}
+.title {
+	margin-bottom: 30px;
+}
+.description {
+	font-size: 17px;
+	text-align: center;
+	width: 520px;
+	max-width: 100%;
+	margin: 0;
+}

@@ -1,0 +1,170 @@
+// colors
+$black: #141414;
+$white: #ffffff;
+$blue_grey: #f6f6f6;
+$light_grey: #dddddd;
+$dark_grey: #838383;
+$green: #10c9c3;
+$red: #ff0033;
+
+$tx_black: #171717;
+$tx_grey: #787878;
+$tx_green: #10c9c3;
+$tx_light_grey: #bcbcbc;
+$tx_white: #ffffff;
+
+
+$shadow: 0px 5px 15px 0px rgba(0,0,0,0.1);
+$hover_lightness: 50%;
+$hover_opacity: 0.4;
+$disabled_color: -10%;
+
+$opacity__banner_overlay: rgba(20,20,20,0.6);
+$green_hover: rgba(16,201,195,0.85);
+$button_shadow: 2px 2px 18px 0px rgba(0,0,0,0.1);
+
+
+// fonts
+$Montserrat: 'Montserrat', sans-serif;
+$montserrat_weight: 600;
+$Sans: 'Nunito Sans', sans-serif;
+$sans_weight: 400;
+
+
+// icons
+$icon_angle: "images/ico/angle-left.svg";
+$icon_close: "images/ico/close.svg";
+$icon_eye: "images/ico/look.svg";
+$icon_map_label: "images/ico/map-label.svg";
+
+$icon_clock: "images/ico/clock.svg";
+$icon_like: "images/ico/like.svg";
+$icon_portfolio: "images/ico/portfolio.svg";
+$icon_star: "images/ico/star.svg";
+
+
+// z-index
+$z_loader: 1020;
+$z_popup: 1000;
+$z_popup_back: 1001;
+$z_popup_wrap: 1002;
+$z_tooltip: 1005;
+
+
+
+
+// mixin -----------------------------------------------------------------------
+
+@mixin flex_center() {
+	display: flex;
+	align-items: center;
+}
+@mixin absolute($top:0, $left:0, $z:auto) {
+	position: absolute;
+	z-index: $z;
+	top: $top;
+	left: $left;
+}
+
+@mixin bg_cover($url:"no", $pos:center) {
+	background-position: $pos;
+	background-repeat: no-repeat;
+	background-size: cover;
+	@if($url != "no") {
+		background-image: $url;
+	}
+}
+@mixin bg_contain($url:"no", $pos:center) {
+	background-position: $pos;
+	background-repeat: no-repeat;
+	background-size: contain;
+	@if($url != "no") {
+		background-image: $url;
+	}
+}
+@mixin bg_auto($url:"no", $pos:center) {
+	background-position: $pos;
+	background-repeat: no-repeat;
+	background-size: auto;
+	@if($url != "no") {
+		background-image: $url;
+	}
+}
+@mixin border($side1:"no", $side2:"no") {
+	@if $side1 != "no" {
+		border-#{$side1}: 1px solid $tx_light_grey;
+	}
+	@if $side2 != "no" {
+		border-#{$side2}: 1px solid $tx_light_grey;
+	}
+}
+@mixin arrow($root_dir, $dir: "right") {
+	background-position: center;
+	background-size: 6px 9px;
+	background-repeat: no-repeat;
+	background-image: url($root_dir + $icon_angle);
+	@if $dir == "right" {
+		transform: rotate(180deg);
+	}
+}
+@mixin icon_eye($root_dir) {
+	background-position: center;
+	background-size: 48px 30px;
+	background-repeat: no-repeat;
+	background-image: url($root_dir + $icon_eye);
+}
+
+@mixin fonts($size:16px, $family:$Sans, $height:24px, $weight:$sans_weight) {
+	@if($family == $Montserrat) {
+		$weight: $montserrat_weight;
+	}
+	
+	font-family: $family;
+	font-size: $size;
+	font-weight: $weight;
+	line-height: $height;
+}
+
+@mixin transition($elem:all, $time:0.3s) {
+	transition: $elem $time ease;
+}
+// end Mixin -------------------------------------------------------------------
+
+// form ------------------------------------------------------------------------
+
+%form_colors {
+	color: $tx_black;
+	background-color: $white;
+}
+%form_colors:hover {
+	color: scale-color($tx_black, $lightness:$hover_lightness);
+}
+%form_colors:focus {
+	outline: scale-color($light_grey, $lightness:-10%) solid 1px;
+}
+%form_colors:disabled {
+	color: scale-color($tx_black, $lightness:$disabled_color);
+	background-color: scale-color($light_grey, $lightness:$disabled_color);
+	border: none;
+}
+%form_colors::placeholder {
+	color: $tx_grey;
+}
+%form_colors:hover::placeholder {
+	color: scale-color($tx_grey, $lightness:$hover_lightness);
+}
+%form_colors:disabled::placeholder {
+	color: scale-color($tx_grey, $lightness:$disabled_color);
+}
+%form_colors:hover:disabled::placeholder {
+	color: scale-color($tx_grey, $lightness:$disabled_color);
+}
+%form_structure {
+	@include fonts(15px);
+	height: 48px;
+	width: 100%;
+	padding: 12px 20px;
+	margin-bottom: 30px;
+	@include transition();
+}
+// end Form --------------------------------------------------------------------

@@ -1,0 +1,14 @@
+@import "../../assets/sass/_variables";
+
+.indicators_section {
+	padding-top: 98px;
+    padding-bottom: 94px;
+	background-color: $green;
+	color: $tx_white;
+	
+	.section_inside {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+}

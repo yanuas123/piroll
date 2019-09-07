@@ -1,0 +1,21 @@
+@import "../../assets/sass/_variables";
+
+.banner_description_section {
+	padding-top: 112px;
+    padding-bottom: 116px;
+	@include bg_cover(url(../../images/images/person-photo.jpg));
+	background-color: $opacity__banner_overlay;
+	background-blend-mode: darken;
+	color: $tx_white;
+}
+.title {
+	margin-bottom: 30px;
+	color: $tx_white;
+}
+.description {
+	font-size: 17px;
+	text-align: center;
+	width: 520px;
+	max-width: 100%;
+	margin: 0;
+}

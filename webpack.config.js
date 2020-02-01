@@ -171,7 +171,6 @@ module.exports = {
 		}),
 		new CopyPlugin(dir_for_copy),
 		new HtmlWebpackPlugin({
-			title: "Pir",
 			template: "src/index.ejs"
 		}),
 		new HtmlWebpackTagsPlugin({

@@ -21,7 +21,7 @@
 			@include fonts(12px, $Montserrat, 30px);
 			color: $tx_black;
 		}
-		&.active {
+		&.active, &:hover, &:focus {
 			a {
 				color: $tx_green;
 			}

@@ -3,7 +3,7 @@
 .banner_description_section {
 	padding-top: 112px;
     padding-bottom: 116px;
-	@include bg_cover(url(../../images/images/person-photo.jpg));
+	@include bg_cover();
 	background-color: $opacity__banner_overlay;
 	background-blend-mode: darken;
 	color: $tx_white;
@@ -15,7 +15,7 @@
 .description {
 	font-size: 17px;
 	text-align: center;
-	width: 520px;
+	width: 490px;
 	max-width: 100%;
 	margin: 0;
 }

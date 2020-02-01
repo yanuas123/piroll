@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<title>MockRestService</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+	<div>
+	    <form name="gen">
+		<textarea id="source" placeholder="Put Interface" rows="5" style="width: 100%;"></textarea>
+		<br>
+		<button id="compile">Compile</button>
+		<br>
+		<div id="result" style="width: 100%; min-height: 200px; background-color: lightyellow; white-space: pre;">Result</div>
+		<br>
+		<button id="copy">Copy</button>
+	    </form>
+	</div>
+	<script>
+	    const text_source = document.getElementById("source");
+	    const text_result = document.getElementById("result");
+	    const btn_compile = document.getElementById("compile");
+	    const btn_copy = document.getElementById("copy");
+
+	    btn_compile.addEventListener("click", function (e) {
+		e.preventDefault();
+		let data = text_source.value.trim();
+		Compile(data);
+	    });
+	    btn_copy.addEventListener("click", function (e) {
+		e.preventDefault();
+		Copy();
+	    });
+
+
+	    function Compile(data) {
+		const readData = new ReadData(data);
+		const dataObj = readData.Data;
+		const compileData = new CompileData(dataObj);
+		const resultData = compileData.Result;
+		console.log(resultData);
+		text_result.innerHTML = resultData;
+	    }
+
+	    function Copy() {
+		copyToBuffer(text_result);
+	    }
+
+
+	    function copyToBuffer(el) {
+		if (document.createRange) {
+		    let range = document.createRange();
+		    range.selectNodeContents(el);
+		    let selection = window.getSelection();
+		    selection.removeAllRanges();
+		    selection.addRange(range);
+		    document.execCommand("copy", false, null);
+		    selection.removeAllRanges();
+		    return true;
+		}
+	    }
+
+	    class ReadData {
+		data = null;
+		dataArray = null;
+		dataObject = {};
+
+		constructor(data) {
+		    this.data = data;
+		    this.expandData();
+		    this.createObjectsOfData();
+		}
+
+		get Data() {
+		    return this.dataObject;
+		}
+
+		expandData() {
+		    let data = this.data.trim();
+		    data = data.replace(/^\{/, "");
+		    data = data.replace(/\}$/, "");
+		    this.dataArray = data.split(";");
+		}
+
+		createObjectsOfData() {
+		    this.dataArray.forEach(item => {
+			let dataArray = item.split(":");
+			const key = dataArray[0].trim();
+			if(!key) return;
+			    dataArray[1] = dataArray[1].trim();
+
+			    const isArray = /^Array/.test(dataArray[1]) || /\[\]$/.test(dataArray[1]);
+			    if (isArray) {
+				dataArray[1] = dataArray[1].replace(/^(Array\<)|(\>|\[\])$/g, "");
+			    }
+
+			    let value = dataArray[1].split("|")[0].trim();
+
+			    let isPrimitive;
+			    switch (value) {
+				case "string":
+				    isPrimitive = true;
+				    break;
+				case "any":
+				    isPrimitive = true;
+				    value = "string";
+				    break;
+				case "number":
+				    isPrimitive = true;
+				    break;
+				case "boolean":
+				    isPrimitive = true;
+				    break;
+				default:
+				    value = `!!!${value}`;
+				    break;
+			    }
+			    if(isArray) {
+				value += "[]";
+			    }
+
+			    this.dataObject[key] = value;
+			});
+		    }
+		}
+
+		class CompileData {
+		    lovTmpl = {
+
+		    };
+		    Tmpl = {
+			main: {
+			    namespace: "!!!",
+			    interface: "!!!",
+			    url: "!!!",
+			    suffix: null,
+			    defArrayLength: null,
+			    mockData: {
+				asArray: false,
+				arrLength: null,
+				limits: [],
+				data: {}
+			    }
+			}
+		    };
+
+		    dataObject = null;
+		    result = "";
+
+		    constructor(data) {
+			this.dataObject = data;
+			this.createTemplate();
+		    }
+
+		    get Result() {
+			return this.result;
+		    }
+
+		    createTemplate() {
+			let result = this.Tmpl.main;
+			result.mockData.data = this.dataObject;
+			this.result = JSON.stringify(result, null, 4);
+			this.result = this.result.replace(/"(?=[A-Za-z0-9\_\$]+":)|"(?=:)/g, "");
+		    }
+		}
+	</script>
+    </body>
+</html>

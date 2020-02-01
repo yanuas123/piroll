@@ -5,10 +5,10 @@ import { ContactInfoSection } from "../sections/contact_info_section.jsx";
 
 
 export class ContactPage extends React.Component {
-	render(props) {
+	render() {
 		return (
 			<div className={styles.contact_page}>
-				<ContactInfoSection />
+				<ContactInfoSection contact_info={this.props.contact_info} />
 			</div>
 			);
 	}

@@ -420,6 +420,7 @@ body.noscroll {
 	text-align: center;
 	opacity: 1;
 	@include transition(opacity, 0s);
+	display: none;
 
 	&.hidden-tooltip {
 		opacity: 0;
@@ -431,3 +432,19 @@ body.noscroll {
 /* end Tooltip -------------------------------------------------------------- */
 
 /* end STANDARD ELEMENTS ==================================================== */
+
+
+
+/* Icons of indicators */
+.icon__projects_completed {
+	background-image: url(./#{$icon_portfolio});
+}
+.icon__working_hours {
+	background-image: url(./#{$icon_clock});
+}
+.icon__positive_feedbacks {
+	background-image: url(./#{$icon_star});
+}
+.icon__happy_clients {
+	background-image: url(./#{$icon_like});
+}

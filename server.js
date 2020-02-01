@@ -63,7 +63,7 @@ app.get("/startinfo", function(req, res) {
 										main_menu: main_menu_data,
 										footer_menu: footer_menu_data,
 										social_network: social_network_data,
-										contact_info: contact_info_data
+										contact_info: contact_info_data[0]
 									};
 									res.status(200).send(obj);
 								}
@@ -84,21 +84,17 @@ app.get("/indicators", function(req, res) {
 });
 
 // getting gallery data
-function getAllGallery(req, res) {
+app.get("/gallery", function(req, res) {
 	Gallery.find({}, function(err, data) {
 		if(checkDBRequest(err, data, res)) res.status(200).send(data);
 	});
-}
-function getGalleryItem(req, res) {
+});
+app.get("/gallery/:url", function(req, res) {
 	Gallery.find({
 		url: req.params.url
 	}, function(err, data) {
 		if(checkDBRequest(err, data, res)) res.status(200).send(data[0]);
 	});
-}
-app.get("/gallery/:url", function(req, res) {
-	if(req.params.url) getGalleryItem(req, res);
-	else getAllGallery(req, res);
 });
 
 

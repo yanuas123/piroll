@@ -4,6 +4,7 @@
 	&:hover, &:focus {
 		color: $tx_light_grey;
 		opacity: $hover_opacity;
+		cursor: pointer;
 		@media (hover: none) {
 			opacity: 1;
 		}

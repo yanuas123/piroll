@@ -5,9 +5,9 @@ var React = require('react');
 
 export function IndicatorsItem(props) {
 	return (
-		<div className={[styles.indicators_item, styles.star_icon].join(" ")}>
-			<div className={styles.number}>458</div>
-			<div className={styles.title}>projects completed</div>
+		<div className={[styles.indicators_item, props.indicator.class_name].join(" ")}>
+			<div className={styles.number}>{props.indicator.count}</div>
+			<div className={styles.title}>{props.indicator.title}</div>
 		</div>
 		);
 }

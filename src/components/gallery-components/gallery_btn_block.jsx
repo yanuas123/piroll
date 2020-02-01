@@ -1,7 +1,7 @@
 import styles from './gallery_btn_block.module.scss';
 
 var React = require('react');
-import { SliderIndicator } from "../secondary-components/slider_indicator.jsx";
+import { SliderIndicator } from "../service-components/slider_indicator.jsx";
 
 
 export class GalleryBtnBlock extends React.Component {
